@@ -9,7 +9,7 @@ export const ContactList = () => {
   const dispatch = useDispatch();
   const filters = useSelector(selectFilter);
   const contacts = useSelector(selectContacts);
-  const filteredContacts = contacts.filter(({ name }) =>
+  const filteredContacts = contacts?.filter(({ name }) =>
     name.toLowerCase().includes(filters.toLowerCase())
   );
 
@@ -34,7 +34,7 @@ export const ContactList = () => {
 
   return (
     <ul>
-      {filteredContacts.map(contact => {
+      {filteredContacts?.map(contact => {
         return (
           <li key={nanoid()} id={contact.id}>
             <span
