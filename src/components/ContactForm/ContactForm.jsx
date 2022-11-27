@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { nanoid } from 'nanoid/non-secure';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'Redux/Operations';
-import { contactsFromRedux } from 'Redux/Selector';
+import { selectContacts } from 'Redux/Selector';
 import css from 'components/ContactForm/ContactForm.module.css';
 
 export const ContactForm = () => {
@@ -10,7 +10,7 @@ export const ContactForm = () => {
   const [number, setNumber] = useState('');
 
   const dispatch = useDispatch();
-  const contacts = useSelector(contactsFromRedux);
+  const contacts = useSelector(selectContacts);
 
   const repeatControlData = data => {
     const savedNameArray = contacts.map(({ name }) => name.toLowerCase());

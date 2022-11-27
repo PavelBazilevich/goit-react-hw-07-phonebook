@@ -1,14 +1,14 @@
 import { nanoid } from 'nanoid/non-secure';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteContact } from 'Redux/Operations';
-import { filterFromRedux, contactsFromRedux } from 'Redux/Selector';
+import { selectFilter, selectContacts } from 'Redux/Selector';
 // import PropTypes from 'prop-types';
 import css from 'components/ContactList/ContactList.module.css';
 
 export const ContactList = () => {
   const dispatch = useDispatch();
-  const filters = useSelector(filterFromRedux);
-  const contacts = useSelector(contactsFromRedux);
+  const filters = useSelector(selectFilter);
+  const contacts = useSelector(selectContacts);
   const filteredContacts = contacts.filter(({ name }) =>
     name.toLowerCase().includes(filters.toLowerCase())
   );
