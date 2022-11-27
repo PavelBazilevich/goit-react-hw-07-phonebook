@@ -13,24 +13,43 @@ export const ContactList = () => {
     name.toLowerCase().includes(filters.toLowerCase())
   );
 
-  const createMarcup = () => {
-    return filteredContacts.map(contact => {
-      return (
-        <li key={nanoid()} id={contact.id}>
-          <span
-            className={css.item_content}
-          >{`${contact.name}: ${contact.phone}`}</span>
-          <button
-            className={css.deleted_button}
-            data-id={contact.id}
-            onClick={() => dispatch(deleteContact(contact.id))}
-          >
-            Delete
-          </button>
-        </li>
-      );
-    });
-  };
+  // const createMarcup = () => {
+  //   return filteredContacts.map(contact => {
+  //     return (
+  //       <li key={nanoid()} id={contact.id}>
+  //         <span
+  //           className={css.item_content}
+  //         >{`${contact.name}: ${contact.phone}`}</span>
+  //         <button
+  //           className={css.deleted_button}
+  //           data-id={contact.id}
+  //           onClick={() => dispatch(deleteContact(contact.id))}
+  //         >
+  //           Delete
+  //         </button>
+  //       </li>
+  //     );
+  //   });
+  // };
 
-  return <ul>{createMarcup()}</ul>;
+  return (
+    <ul>
+      {filteredContacts.map(contact => {
+        return (
+          <li key={nanoid()} id={contact.id}>
+            <span
+              className={css.item_content}
+            >{`${contact.name}: ${contact.phone}`}</span>
+            <button
+              className={css.deleted_button}
+              data-id={contact.id}
+              onClick={() => dispatch(deleteContact(contact.id))}
+            >
+              Delete
+            </button>
+          </li>
+        );
+      })}
+    </ul>
+  );
 };

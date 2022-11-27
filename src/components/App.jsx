@@ -18,6 +18,7 @@ export const App = () => {
   const contacts = useSelector(contactsFromRedux);
   const isLoading = useSelector(isLoadingFromRedux);
   const error = useSelector(getError);
+
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
@@ -28,12 +29,8 @@ export const App = () => {
       <ContactForm />
       {error && <p>{error}</p>}
       <h2>Contacts</h2>
-      {contacts?.length === 0 && (
-        <>
-          <Filter />
-          <ContactList />
-        </>
-      )}
+      <Filter />
+      {contacts && <ContactList />}
       {!isLoading && !error && !contacts && <p>There is no contacts</p>}
       {isLoading && <Loader />}
     </Layout>
