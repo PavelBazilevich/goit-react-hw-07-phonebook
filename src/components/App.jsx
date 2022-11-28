@@ -23,15 +23,15 @@ export const App = () => {
     <Layout>
       <Title>Phonebook</Title>
       <ContactForm />
-      {error && <p>{error}</p>}
       <h2>Contacts</h2>
-      {contacts?.lenght !== 0 && (
+      {error && <p>{error}</p>}
+      {contacts.length !== 0 && (
         <>
           <Filter />
           <ContactList />
         </>
       )}
-      {!isLoading && !error && !contacts && <p>There is no contacts</p>}
+      {!isLoading && !error && contacts === [] && <p>There is no contacts</p>}
       {isLoading && <Loader />}
     </Layout>
   );

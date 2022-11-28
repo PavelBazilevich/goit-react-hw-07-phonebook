@@ -13,11 +13,10 @@ const contactsSlice = createSlice({
   name: 'contacts',
   // Початковий стан редюсера слайсу
   initialState: {
-    contacts: {
-      items: [],
-      isLoading: false,
-      error: null,
-    },
+    items: [],
+    isLoading: false,
+    error: null,
+
     filter: '',
   },
   // Об'єкт редюсерів
